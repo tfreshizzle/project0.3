@@ -1,23 +1,80 @@
+/* therapist-card.css */
 .therapist-card {
-    background-color: #ffffff;
-    border-radius: 10px;
-    padding: 15px;
-    margin: 10px 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .therapist-card h3 {
-    margin: 0;
-    margin-bottom: 10px;
-    font-size: 18px;
-    color: #333333;
-  }
-  
-  .therapist-card p {
-    margin: 5px 0;
-    font-size: 14px;
-    color: #666666;
-  }
-  
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 10px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.therapist-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.therapist-header h3 {
+  margin: 0;
+  margin-bottom: 2px;
+  font-size: 18px;
+  color: #333333;
+}
+
+.therapist-about {
+  font-size: 16px;
+  color: #999999;
+  margin-bottom: 10px; /* Adjust as needed */
+}
+
+.therapist-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the left */
+}
+
+.phone-tooltip {
+  display: flex;
+  align-items: center;
+}
+
+.phone-tooltip .tooltip {
+  margin-right: 5px;
+  background-color: #ccc;
+  border-radius: 50%;
+  padding: 2px 6px;
+  cursor: pointer;
+  position: relative;
+}
+
+.phone-tooltip .tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* Position above the tooltip */
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.phone-tooltip .tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.therapist-details p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #666666;
+}
+
+.therapist-phone {
+  margin-left: 5px;
+}

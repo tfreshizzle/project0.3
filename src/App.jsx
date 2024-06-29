@@ -10,20 +10,20 @@ function App() {
   const [currentPage, setCurrentPage] = useState('landing'); // 'landing', 'map', 'form'
 
   const therapists = [
-    { id: 1, name: "רונן", location: "ירושלים", phone: "123-456-7890" },
-    { id: 2, name: "אליס", location: "תל אביב", phone: "234-567-8901" },
-    { id: 3, name: "בוב", location: "רמת גן", phone: "345-678-9012" },
-    { id: 4, name: "צ'רלי", location: "באר שבע", phone: "456-789-0123" },
-    { id: 5, name: "דוד", location: "ירושלים", phone: "567-890-1234" },
-    { id: 6, name: "אוה", location: "תל אביב", phone: "678-901-2345" },
-    { id: 7, name: "פרנק", location: "רמת גן", phone: "789-012-3456" },
-    { id: 8, name: "חנה", location: "באר שבע", phone: "890-123-4567" },
-    { id: 9, name: "איוואן", location: "ירושלים", phone: "901-234-5678" },
-    { id: 10, name: "יוליה", location: "תל אביב", phone: "012-345-6789" },
-    { id: 11, name: "קווין", location: "רמת גן", phone: "123-456-7891" },
-    { id: 12, name: "לילי", location: "באר שבע", phone: "234-567-8910" },
-    { id: 13, name: "מייק", location: "ירושלים", phone: "345-678-9012" },
-    { id: 14, name: "ניקול", location: "תל אביב", phone: "456-789-0123" }
+    { id: 1, name: "רונן", location: "ירושלים", phone: "123-456-7890", about: "נטורופתיה" },
+    { id: 2, name: "אליס", location: "תל אביב", phone: "234-567-8901", about: "NLP" },
+    { id: 3, name: "בוב", location: "רמת גן", phone: "345-678-9012", about: "פסיכולוגיה" },
+    { id: 4, name: "צ'רלי", location: "באר שבע", phone: "456-789-0123", about: "פסיכותרפיה" },
+    { id: 5, name: "דוד", location: "ירושלים", phone: "567-890-1234", about: "ייעוץ זוגי" },
+    { id: 6, name: "אוה", location: "תל אביב", phone: "678-901-2345", about: "תרפיה באומנות" },
+    { id: 7, name: "פרנק", location: "רמת גן", phone: "789-012-3456", about: "טיפול התנהגותי" },
+    { id: 8, name: "חנה", location: "באר שבע", phone: "890-123-4567", about: "טיפול משפחתי" },
+    { id: 9, name: "איוואן", location: "ירושלים", phone: "901-234-5678", about: "פסיכואנליזה" },
+    { id: 10, name: "יוליה", location: "תל אביב", phone: "012-345-6789", about: "פסיכודרמה" },
+    { id: 11, name: "קווין", location: "רמת גן", phone: "123-456-7891", about: "תרפיה בתנועה" },
+    { id: 12, name: "לילי", location: "באר שבע", phone: "234-567-8910", about: "טיפול קוגניטיבי" },
+    { id: 13, name: "מייק", location: "ירושלים", phone: "345-678-9012", about: "הדרכת הורים" },
+    { id: 14, name: "ניקול", location: "תל אביב", phone: "456-789-0123", about: "תרפיה במוזיקה" }
   ];
 
   const handleCardClick = (location) => {
@@ -70,5 +70,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
