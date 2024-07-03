@@ -8,14 +8,14 @@ import './index.css';
 
 function App() {
   const [markers, setMarkers] = useState([]);
-  const [currentPage, setCurrentPage] = useState('landing'); // 'landing', 'map', 'form'
+  const [currentPage, setCurrentPage] = useState('login'); // Start with 'login'
   const [user, setUser] = useState(null);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       setUser(user);
-      if (!user) {
-        setCurrentPage('login');
+      if (user) {
+        setCurrentPage('landing');
       }
     });
     return () => unsubscribe();
@@ -72,23 +72,25 @@ function App() {
 
   return (
     <div className="container">
-      <div className="header">
-        <span>Hi, {user ? user.displayName : "Guest"}</span>
-        {user ? (
-          <button onClick={handleSignOut}>Sign Out</button>
-        ) : (
-          <button onClick={handleGoogleSignIn}>Sign In</button>
-        )}
-        <button className="form-toggle-button" onClick={() => setCurrentPage('landing')}>
-          בית
-        </button>
-        <button className="form-toggle-button" onClick={() => setCurrentPage('map')}>
-          הצג מפה
-        </button>
-        <button className="form-toggle-button" onClick={() => setCurrentPage('form')}>
-          הוסף מטפל חדש
-        </button>
-      </div>
+      {currentPage !== 'login' && (
+        <div className="header">
+          <span>Hi, {user ? user.displayName : "Guest"}</span>
+          {user ? (
+            <button onClick={handleSignOut}>Sign Out</button>
+          ) : (
+            <button onClick={handleGoogleSignIn}>Sign In</button>
+          )}
+          <button className="form-toggle-button" onClick={() => setCurrentPage('landing')}>
+            בית
+          </button>
+          <button className="form-toggle-button" onClick={() => setCurrentPage('map')}>
+            הצג מפה
+          </button>
+          <button className="form-toggle-button" onClick={() => setCurrentPage('form')}>
+            הוסף מטפל חדש
+          </button>
+        </div>
+      )}
       {currentPage === 'login' && (
         <div className="login-modal">
           <button className="google-signin-button" onClick={handleGoogleSignIn}>Sign in with Google</button>
