@@ -1,13 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TherapistCard from './TherapistCard.jsx';
 import Map from './Map.jsx';
 import TherapistForm from './TherapistForm.jsx';
 import LandingPage from './LandingPage.jsx';
+import { auth, provider, signInWithPopup, signOut } from './firebaseConfig';
 import './index.css';
 
 function App() {
   const [markers, setMarkers] = useState([]);
   const [currentPage, setCurrentPage] = useState('landing'); // 'landing', 'map', 'form'
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      setUser(user);
+      if (!user) {
+        setCurrentPage('login');
+      }
+    });
+    return () => unsubscribe();
+  }, []);
 
   const therapists = [
     { id: 1, name: "רונן", location: "ירושלים", phone: "123-456-7890", about: "נטורופתיה" },
@@ -38,9 +50,35 @@ function App() {
     setCurrentPage('map'); // Redirect to map page after form submission
   };
 
+  const handleGoogleSignIn = async () => {
+    try {
+      await signInWithPopup(auth, provider);
+      alert("Signed in successfully!");
+      setCurrentPage('landing');
+    } catch (error) {
+      console.error("Error during sign-in:", error);
+    }
+  };
+
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      setUser(null);
+      setCurrentPage('login');
+    } catch (error) {
+      console.error("Error during sign-out:", error);
+    }
+  };
+
   return (
     <div className="container">
       <div className="header">
+        <span>Hi, {user ? user.displayName : "Guest"}</span>
+        {user ? (
+          <button onClick={handleSignOut}>Sign Out</button>
+        ) : (
+          <button onClick={handleGoogleSignIn}>Sign In</button>
+        )}
         <button className="form-toggle-button" onClick={() => setCurrentPage('landing')}>
           בית
         </button>
@@ -51,6 +89,12 @@ function App() {
           הוסף מטפל חדש
         </button>
       </div>
+      {currentPage === 'login' && (
+        <div className="login-modal">
+          <button className="google-signin-button" onClick={handleGoogleSignIn}>Sign in with Google</button>
+          <button className="skip-button" onClick={() => setCurrentPage('landing')}>Maybe Later</button>
+        </div>
+      )}
       {currentPage === 'landing' && <LandingPage navigateToMap={() => setCurrentPage('map')} />}
       {currentPage === 'map' && (
         <div className="main-content">
@@ -70,4 +114,5 @@ function App() {
     </div>
   );
 }
+
 export default App;

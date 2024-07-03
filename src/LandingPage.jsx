@@ -6,6 +6,7 @@ import soldiersImage3 from './images/soldiers3.png';
 import soldiersImage4 from './images/soldiers4.png';
 import soldiersImage5 from './images/soldier5.png';
 import soldiersImage6 from './images/soldier6.png';
+import { auth, provider, signInWithPopup } from './firebaseConfig'; // Import Firebase config
 
 const LandingPage = ({ navigateToMap }) => {
   const carouselRef = useRef(null);
@@ -24,6 +25,15 @@ const LandingPage = ({ navigateToMap }) => {
     return () => clearInterval(interval);
   }, []);
 
+  const handleGoogleSignIn = async () => {
+    try {
+      await signInWithPopup(auth, provider);
+      alert("Signed in successfully!");
+    } catch (error) {
+      console.error("Error during sign-in:", error);
+    }
+  };
+
   return (
     <div className="landing-container">
       <div className="carousel" ref={carouselRef}>
@@ -35,6 +45,7 @@ const LandingPage = ({ navigateToMap }) => {
         <img src={soldiersImage6} alt="soldiers6" />
       </div>
       <button className="map-button" onClick={navigateToMap}>מעבר למפה</button>
+      <button className="google-signin-button" onClick={handleGoogleSignIn}>Sign in with Google</button>
       <div className="description">
         <h2>HEROCARE</h2>
         <p>
@@ -57,7 +68,6 @@ const LandingPage = ({ navigateToMap }) => {
         <p>
         מודים לכם על שירותכם צוות אתר ״HEROCARE”      
         </p>
-      
       </div>
     </div>
   );
