@@ -1,10 +1,14 @@
-// src/firebaseAdmin.js
 import admin from 'firebase-admin';
-import serviceAccount from './serviceAccountKey.json';
+import dotenv from 'dotenv';
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: 'https://herocare-e3f95.firebaseio.com'
-});
+dotenv.config();
+
+const serviceAccount = require(process.env.GOOGLE_APPLICATION_CREDENTIALS);
+
+if (!admin.apps.length) {
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+  });
+}
 
 export default admin;
