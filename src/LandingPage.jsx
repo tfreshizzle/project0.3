@@ -45,7 +45,6 @@ const LandingPage = ({ navigateToMap }) => {
         <img src={soldiersImage6} alt="soldiers6" />
       </div>
       <button className="map-button" onClick={navigateToMap}>מעבר למפה</button>
-      <button className="google-signin-button" onClick={handleGoogleSignIn}>Sign in with Google</button>
       <div className="description">
         <h2>HEROCARE</h2>
         <p>
