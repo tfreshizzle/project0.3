@@ -1,48 +1,129 @@
 .landing-container {
-    text-align: center;
-    padding: 20px;
-    background-color: #87CEEB; /* Sky blue color */
-    height: 100vh;
-  }
-  
-  .carousel {
-    display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    margin-bottom: 20px;
-  }
-  
-  .carousel img {
-    height: 200px;
-    width: auto;
-    margin: 0 10px;
-  }
-  
-  .map-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    font-size: 16px;
-    margin-bottom: 20px;
-    cursor: pointer;
-  }
-  
-  .description {
-    text-align: center;
-    margin: 0 auto;
-    width: 50%;
-    line-height: 2em; /* Double line spacing */
-  }
-  
-  .description h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .description p {
-    font-size: 18px;
-    margin-bottom: 20px; /* Add space between paragraphs */
-  }
-  
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Cleaner font */
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.top-bar {
+  background-color: #005ea2; /* Adjusted color for consistency */
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.main-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero {
+  width: 100%;
+  text-align: center;
+  padding: 50px 20px;
+  background-image: url('path/to/hero-image.jpg'); /* High-quality background image */
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px 0;
+  width: 100%; /* Restricts the carousel width to the viewport */
+}
+.info-image, .carousel-image {
+  max-width: 100%; /* Ensures images do not exceed their container's width */
+  height: auto; /* Maintains aspect ratio */
+}
+
+.carousel-image {
+  max-height: 200px;
+  margin: 0 10px;
+  transition: transform 0.3s ease;
+}
+.info-section, .hero, .testimonial-section {
+  width: 100%; /* Ensures these sections do not overflow their container */
+  box-sizing: border-box; /* Includes padding in width calculations */
+}
+
+
+.carousel-image:hover {
+  transform: scale(1.1);
+}
+
+.info-section {
+  display: flex;
+  padding: 20px;
+  width: 80%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.info-content {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.info-image {
+  flex: 1;
+  max-width: 50%;
+  object-fit: cover;
+}
+
+.cta-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+footer {
+  padding: 20px;
+  text-align: center;
+  background-color: #005ea2;
+  color: white;
+}.testimonial-section {
+  background-color: #e0f7fa; /* Light blue background */
+  padding: 20px 0;
+  text-align: center;
+}
+
+.testimonial-header h2 {
+  font-size: 24px;
+  color: #005ea2; /* Matching the blue color theme */
+  margin-bottom: 20px;
+}
+
+.testimonial-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.testimonial-item {
+  width: 30%; /* Adjust based on the actual content width */
+  padding: 10px;
+  text-align: center;
+}
+
+.testimonial-item img {
+  width: 50px; /* Adjust the size of your logo */
+  height: 50px; /* Maintain aspect ratio */
+  margin-bottom: 20px;
+}
+
+.testimonial-item p {
+  font-size: 16px;
+  color: #333;
+}
